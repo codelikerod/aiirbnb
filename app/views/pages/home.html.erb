@@ -1,1 +1,5 @@
-<h2>Bienvenue sur notre première page !!</h2>
+<h2>Bienvenue sur notre première page</h2>
+
+<%= link_to 'Inscription', new_user_registration_path %>
+<%= link_to 'Connexion', new_user_session_path %>
+<%= link_to 'Déconnexion',  destroy_user_session_path, method: :delete %>

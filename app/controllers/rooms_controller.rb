@@ -65,8 +65,8 @@ private
            flash[:danger] = "Vous n'avez pas le droit de modifier cette page"
            redirect_to root_path
        end
-   end
     end
+    
    
     
 end

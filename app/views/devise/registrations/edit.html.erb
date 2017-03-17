@@ -1,9 +1,19 @@
 <div class="row">
-  <div class="col-md-5 col-md-offset-3 text-center">
-
-    <h2>Modifier le profil</h2>
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item">
+        <%= link_to 'Modifier mon profil', edit_user_registration_path, class: 'sidebar-link active' %>
+      </li>
+    </ul>
+    <br>
+    <%= link_to 'Voir mon profil', user_path(current_user.id), class: 'btn btn-default wide1' %>
+  </div>
+  <div class="col-md-7 text-center">
+    <div class="panel panel-default">
+      <div class="panel-heading">Mon profil</div>
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
     
       <div class="form-group">
@@ -14,8 +24,23 @@
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse e-mail" %>
       </div>
       
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <span class="btn btn-default btn-file">
+              Upload ma photo
+            <%= f.file_field :avatar %>
+            </span>
+          </div>
+        </div>
+      </div>
+      
       <div class="form-group">
-        <%= f.file_field :avatar %>
+        <%= f.text_field :phone_number, class: "form-control", placeholder: "Numéro de téléphone" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.text_area :description, rows:5, col:25, class: "form-control", placeholder: "Ma desription" %>
       </div>
     
       <div class="form-group">
@@ -25,16 +50,14 @@
       <div class="form-group">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe" %>
       </div>
-    
-      <div class="form-group">
-        <br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe actuel (pour confirmer tout changement)" %>
-      </div>
-    
+
       <div class="actions">
         <%= f.submit "Enregistrer", class: "btn btn-primary" %>
       </div>
     <% end %>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

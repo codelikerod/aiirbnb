@@ -1,0 +1,131 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Devenez hôte Aiirbnb
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <%= form_for @room do |f| %>
+                
+                <div class="row">
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Genre d'habitation</label>
+                            <%= f.select :home_type, [["Maison","Maison"],["Appartement", "Appartement"],
+                            ["Bed & Breakfast", "Bed & breakfast"]], id: "home_type", prompt:"A sélectionner...",
+                            class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Type de logement</label>
+                            <%= f.select :room_type, [["Logement entier","Logement entier"],["Chalbre privée", "Chambre privée"],
+                            ["Chambre partagée", "Chambre partagée"]], prompt:"A sélectionner...",
+                            class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Combien de voyageurs ?</label>
+                            <%= f.select :accomodate, [["1 voyageur",1],["2 voyageurs",2],
+                            ["3 voyageurs",3], ["4 voyageurs",4] ,["5 voyageurs",5],
+                            ["6 voyageurs",6]], prompt:"A sélectionner...",
+                            class:"form-control" %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Chambres</label>
+                            <%= f.select :bed_room, [["1",1],["2",2],
+                            ["3",3], ["4",4]], prompt:"A sélectionner...",
+                            class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="col-md-4 select">
+                        <div class="form-group">
+                            <label>Salles de bain</label>
+                            <%= f.select :accomodate, [["1",1],["2",2],
+                            ["3",3], ["4",4]], prompt:"A sélectionner...",
+                            class:"form-control" %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label>Donnez un nom au logement</label>
+                        <%= f.text_field :listing_name, placeholder:"Titre de l'annonce", class:"form-control" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label>Résumé</label>
+                        <%= f.text_area :summary, placeholder:"Décrivez le décor, l'ambiance, ce qui se trouve à proximité, etc...", class:"form-control" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <%= f.text_field :address, placeholder:"Où est situé votre logement ?", class:"form-control" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <%= f.check_box :is_wifi %>Wifi
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_tv %>Télévision
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_closet %>Penderie/Commode
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_shampoo %>Shampoing
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <%= f.check_box :is_kitchen %>Cuisine
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_breakfast %>Petit déjeuner, café, thé
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_heating %>Chauffage
+                        </div>
+                        <div class="form-group">
+                            <%= f.check_box :is_air %>Climatisation
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Prix par nuit</label>
+                            <div class="input-group">
+                                <%= f.text_field :price, placeholder:"ex: 45€", class: "form-control" %>
+                            </div><div class="input-group-addon">€</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <%= f.check_box :active %> Annonce active
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <%= f.submit "Je valide mon annonce", class:"btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+             
+             <li>
+               <%= link_to new_room_path do %>
+                 <i class="fa fa-home fa-lg"></i> Devenez hôte
+               <% end %>
+             </li>
+             
         <% if (!user_signed_in?) %>
             <li><%= link_to 'Inscription', new_user_registration_path %></li>
             <li><%= link_to 'Connexion', new_user_session_path %></li>

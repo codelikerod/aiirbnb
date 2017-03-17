@@ -5,6 +5,7 @@
     <div class="panel-body">
         <div class="container">
             <%= form_for @room do |f| %>
+                <%= render 'shared/errors' %>
                 
                 <div class="row">
                     <div class="col-md-4 select">
@@ -46,7 +47,7 @@
                     <div class="col-md-4 select">
                         <div class="form-group">
                             <label>Salles de bain</label>
-                            <%= f.select :accomodate, [["1",1],["2",2],
+                            <%= f.select :bath_room, [["1",1],["2",2],
                             ["3",3], ["4",4]], prompt:"A sélectionner...",
                             class:"form-control" %>
                         </div>
@@ -111,7 +112,8 @@
                             <label>Prix par nuit</label>
                             <div class="input-group">
                                 <%= f.text_field :price, placeholder:"ex: 45€", class: "form-control" %>
-                            </div><div class="input-group-addon">€</div>
+                            <div class="input-group-addon">€</div>
+                            </div>
                         </div>
                     </div>
                 </div>

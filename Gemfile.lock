@@ -39,6 +39,7 @@ GEM
     arel (6.0.4)
     autoprefixer-rails (6.7.7)
       execjs
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -48,6 +49,9 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     climate_control (0.1.0)
+    cloudinary (1.6.0)
+      aws_cf_signer
+      rest-client
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
@@ -66,12 +70,16 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.1)
+    domain_name (0.5.20170223)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -92,6 +100,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    netrc (0.11.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
@@ -101,6 +110,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    paperclip-cloudinary (1.3.0)
+      cloudinary (~> 1.1)
     pg (0.20.0)
     rack (1.6.5)
     rack-test (0.6.3)
@@ -141,6 +152,10 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rest-client (2.0.1)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -173,6 +188,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -194,6 +212,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   paperclip
+  paperclip-cloudinary
   pg
   rails (= 4.2.5)
   rails-i18n

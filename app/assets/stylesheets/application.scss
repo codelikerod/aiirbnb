@@ -209,3 +209,11 @@ input[type="checkbox"]:checked:before {
 .panel-heading.preview img{
   width: 100%;
 }
+
+.equipments li{
+  margin-bottom: 10px;
+  list-style-type: none;
+}
+.text-line-through{
+  text-decoration: line-through;
+}

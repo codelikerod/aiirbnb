@@ -30,6 +30,8 @@ gem 'paperclip-cloudinary'
 
 gem 'geocoder'
 
+gem 'jquery-ui-rails'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

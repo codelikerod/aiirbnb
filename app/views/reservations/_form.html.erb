@@ -18,6 +18,8 @@
         </div>
     </div>
     
+    <h5><div id="message"></div></h5>
+    
     <div id="preview" style="display: none">
         <table class="reservation-table">
             <tbody>
@@ -39,7 +41,7 @@
     
     <br>
     
-    <%= f.submit "Demande de réservation", class:"btn btn-primary wide" %>
+    <%= f.submit "Demande de réservation", id:"btn_book", class:"btn btn-primary wide", disabled: 'true' %>
 
 <% end %>
 
@@ -76,8 +78,47 @@
                     maxDate: '3m',
                     beforeShowDay: unavailable,
                     onSelect: function(selected) {
-                        $('#reservation_end_date').datepicker("option","minDate", selected);
+                        var newdate = new Date($("#reservation_start_date").datepicker("getDate"));
+                        newdate.setDate(newdate.getDate() + 1);
+                        $('#reservation_end_date').datepicker("option","minDate", newdate);
                         $('#reservation_end_date').attr('disabled', false);
+                        
+                        var start_date = $(this).datepicker('getDate');
+                        var end_date = $('#reservation_end_date').datepicker('getDate');
+                        var diff = (end_date - start_date)/1000/60/60/24;
+                        var days = Math.round(diff);
+                        
+                        
+                        var input = {
+                            'start_date': start_date,
+                            'end_date': end_date,
+                            'room_id': <%= @room.id %>
+                            
+                        }
+                            
+                            $.ajax({
+                                url: '/preview',
+                                data: input,
+                                success: function(data) {
+                                    if (data.conflict) {
+                                        $('#message').show();
+                                        $('#message').text("Ces dates sont indisponibles");
+                                        $('#preview').hide();
+                                        $('#btn_book').attr('disabled', true);
+                                    } else {
+                                        $('#message').hide();
+                                        $('#preview').show();
+                                        $('#btn_book').attr('disabled', false);
+                                        
+                                        var total = days * <%= @room.price %>
+                                        $('#reservation_days').text(days);
+                                        $('#reservation_sum').text(total);
+                                        $('#reservation_total').val(total);
+                                    }
+                                
+                                }
+                            });
+                        
                     }
                 });
                 
@@ -91,6 +132,43 @@
                     beforeShowDay: unavailable,
                     onSelect: function(selected) {
                         $('#reservation_start_date').datepicker("option", "maxDate", selected);
+                        
+                        var start_date = $('#reservation_start_date').datepicker('getDate');
+                        var end_date = $(this).datepicker('getDate');
+                        var diff = (end_date - start_date)/1000/60/60/24;
+                        var days = Math.round(diff);
+                        
+                        
+                        var input = {
+                            'start_date': start_date,
+                            'end_date': end_date,
+                            'room_id': <%= @room.id %>
+                            
+                        }
+                            
+                            $.ajax({
+                                url: '/preview',
+                                data: input,
+                                success: function(data) {
+                                    if (data.conflict) {
+                                        $('#message').show();
+                                        $('#message').text("Ces dates sont indisponibles");
+                                        $('#preview').hide();
+                                        $('#btn_book').attr('disabled', true);
+                                    } else {
+                                        $('#message').hide();
+                                        $('#preview').show();
+                                        $('#btn_book').attr('disabled', false);
+                                        
+                                        var total = days * <%= @room.price %>
+                                        $('#reservation_days').text(days);
+                                        $('#reservation_sum').text(total);
+                                        $('#reservation_total').val(total);
+                                    }
+                                
+                                }
+                            });
+                        
                     }
                 });
                 

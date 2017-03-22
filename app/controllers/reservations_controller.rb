@@ -30,6 +30,10 @@ class ReservationsController < ApplicationController
        @trips = current_user.reservations 
     end
     
+    def your_reservations
+       @rooms = current_user.rooms 
+    end
+    
     
    private
    def reservation_params

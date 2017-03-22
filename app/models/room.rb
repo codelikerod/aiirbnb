@@ -2,6 +2,7 @@ class Room < ActiveRecord::Base
   belongs_to :user
   has_many :photos
   has_many :reservations
+  has_many :reviews
   
   validates :home_type, presence: true
   validates :accomodate, presence: true

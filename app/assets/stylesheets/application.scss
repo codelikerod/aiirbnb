@@ -250,3 +250,35 @@ input[type="checkbox"]:checked:before {
   color:#82888a;
   text-decoration: none;
 }
+
+#wrapper { 
+  width:960px;
+  margin:0 auto;
+}
+
+#sidebar {
+  float:right;
+  width:340px;
+}
+
+#sidebar #widget {
+  width:340px;
+  height: 600px;
+  margin-bottom:10px;
+  border-bottom:1px solid #ccc;
+}
+
+#article {
+  width:560px;
+}
+
+.search { position: relative; }
+.search input { text-indent: 30px;}
+
+.search .fa-search { 
+  position: absolute;
+  top: 12px;
+  left: 7px;
+  font-size: 15px;
+  opacity: 0.5;
+}

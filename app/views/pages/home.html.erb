@@ -62,25 +62,23 @@
                     dayNamesMin: ['D','L','M','M','J','V','S'],
                     minDate: 0,
                     maxDate: '3m',
-                    beforeShowDay: unavailable,
                     onSelect: function(selected) {
-                        var newdate = new Date($("#reservation_start_date").datepicker("getDate"));
+                        var newdate = new Date($("#start_date").datepicker("getDate"));
                         newdate.setDate(newdate.getDate() + 1);
-                        $('#reservation_end_date').datepicker("option","minDate", newdate);
+                        $('#end_date').datepicker("option","minDate", newdate);
                     }
         });
         
-        $('#reservation_end_date').datepicker({
+        $('#end_date').datepicker({
                     dateFormat: 'dd-mm-yy',
                     monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août',
                     'Septembre','Octobre','Novembre','Décembre'],
                     dayNamesMin: ['D','L','M','M','J','V','S'],
                     minDate: 0,
                     maxDate: '3m',
-                    beforeShowDay: unavailable,
                     onSelect: function(selected) {
-                        $('#reservation_start_date').datepicker("option", "maxDate", selected);
+                        $('#start_date').datepicker("option", "maxDate", selected);
                     }
         });
-    }
+    })
 </script>

@@ -29,6 +29,12 @@ before_action :require_same_user, only: [:edit, :update]
    
    def show
        @photos = @room.photos
+       
+       @booked = Reservation.where("room_id = ? AND user_id = ?", @room.id, current_user.id).present?
+       if current_user
+           @reviews = @room.reviews
+           @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
+       end
    end
    
    def edit
@@ -41,7 +47,7 @@ before_action :require_same_user, only: [:edit, :update]
               params[:images].each do |i|
                   @room.photos.create(image: i)
               end
-          end
+           end
           @photos = @room.photos
           redirect_to edit_room_path(@room), notice:"Modification enregistrée..."
        else

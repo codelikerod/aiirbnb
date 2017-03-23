@@ -57,6 +57,17 @@
             </div>
           <% end %>
           
+          <% unless current_user.confimed_at? %>
+            <br><br>
+            <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {
+              method: :post }) do |f| %>
+              <%= f.hidden_field :email, value: current_user.email %>
+              <div class="actions">
+                <%= f.submit "Renvoyer un email de confirmation", class: "btn btn-primary" %>
+              </div>
+            })
+            <% end %>
+          <% end %>
           
         </div>
       </div>

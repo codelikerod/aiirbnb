@@ -1,6 +1,14 @@
 <div class="row">
     <div class="col-md-3">
        <%= image_tag avatar_url(@user), class:"avatar-full" %>
+       
+       <% if current_user != @user %>
+           <div class="row-space-2">
+               <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id,
+               recipient_id: @user.id), method: 'post', class:"btn btn-primary wide" %>
+           </div>
+       <% end %>
+       
        <div class="panel panel-default">
            <div class="panel-heading">Vérification</div>
            <div class="panel-body">

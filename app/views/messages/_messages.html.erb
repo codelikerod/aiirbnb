@@ -3,7 +3,7 @@
         <div class="panel-body">
             <%= image_tag avatar_url(message.user), class:"img-circle avatar-small" %>
             <strong><%= message.user.fullname %></strong>
-            <span class="pull-right"><%= message.created_at %></span>
+            <span class="pull-right"><%= timeago_tag message.created_at, :lang=>:fr %></span>
             <br>
             <div class="row-space-2">
                 <%= message.content %>

@@ -11,7 +11,7 @@
             </div>
             <div class="panel-body">
                 <div class="container">
-                    <%= form_for [@conversation, @conversation.messages.new] do |f| %>
+                    <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
                         <div class="form-group">
                             <%= f.text_area :content, placeholder:"Votre message...", class:"form-control" %>
                         </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div id="chat">
-            <%= render 'messages' %>
+            <%= render @messages, locals: {conversation: @conversation} %>
         </div>
     </div>
 </div>

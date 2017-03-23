@@ -5,6 +5,9 @@ Rails.application.configure do
     :path=>':id/:style/:filename'
   })
   
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'aiirbnb.herokuapp.com', :protocol => 'https'}
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

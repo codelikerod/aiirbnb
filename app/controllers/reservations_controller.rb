@@ -23,9 +23,33 @@ class ReservationsController < ApplicationController
  
     def create
        @reservation = current_user.reservations.create(reservation_params)
-       if @reservation.save
-        AppMailer.new_reservation(Room.find(@reservation.room_id), @reservation).deliver_now
-        redirect_to @reservation.room, notice: "Votre réservation a été acceptée"
+       
+       if @reservation.persisted?
+           
+            @payment = Payment.new({email: User.find(@reservation.user_id).email, token: params[:payment]["token"],
+              reservation_id: @reservation.id, amount: @reservation.total
+            })
+           
+            begin
+            @payment.process_payment
+                    
+                    if @reservation.save
+                        AppMailer.new_reservation(Room.find(@reservation.room_id), @reservation).deliver_now
+                        redirect_to @reservation.room, notice: "Votre réservation a été acceptée"
+                    end
+            
+            rescue Exception
+            
+            @reservation.destroy
+            
+            puts 'Le paiement a échoué'
+            
+            redirect_to @reservation.room, notice: "le paiement a échoué"
+                    
+            end
+       else
+           redirect_to @reservation.room, notice: "la réservation a échoué"
+           
        end
     end
     
@@ -40,7 +64,7 @@ class ReservationsController < ApplicationController
     
    private
    def reservation_params
-      params.require(:reservation).permit(:start_date, :end_date, :price, :total, :room_id) 
+      params.require(:reservation).permit(:start_date, :end_date, :price, :total, :room_id, :payment) 
    end
    
    def is_conflict(start_date, end_date)

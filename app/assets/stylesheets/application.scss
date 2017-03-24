@@ -292,34 +292,3 @@ input[type="checkbox"]:checked:before {
   background-color: #F4F4F5;
 }
 
-/*Facebook Connect Button*/
-.btn-primary-fb.btn{
-color:#FFFFFF; /*font color*/
-background:#627AAC; /*button color*/
-border: solid 1px #000000; /* border color, size, and line style */
-font-family: arial, sans-serif; /* font-family determines the web-safe font used for the button name */
-font-size: 14px; /* size of the text in the Facebook Connect Button */
-border-radius: 3px; /* creates rounded corners, for a more button-like look.  The larger the number, the more rounded the corners.  If you don’t want rounded corners, change the border-radius to 0px */
-padding:5px; /* amount of space between the text and the border of the button */
-}
-
-.btn-primary-fb.btn {
-  border: 1px solid #4568b2;
-  border-radius: 2px;
-  font-weight: bold;
-  background-color: #4568b2;
-  color: #fff;
-  padding: 10px 25px 10px 25px;
-}
-
-.btn-primary-fb.btn:hover, .btn-primary-fb.btn:focus {
-  border-color: #627aac;
-  background-color: #627aac;  
-  outline:none;
-}
-
-.btn-primary-fb.btn:active {
-  border-color: #2b2eb2;
-  background-color: #2b2ebB2;  
-  outline:none;
-}

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
                     :path_names=>{:sign_in=>'login', :sign_out=>'logout', :edit=>'profile'},
                     :controllers=>{:registrations=>'registrations',
                                     :confirmations=>'confirmations'
+                              
                     }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :reviews
   
-  def self.from_omniau(auth)
+  def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     if user
       return user
@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
         u.password = Devise.friendly_token[0,20]
       end
     end
+    
   end
+  
   
 end

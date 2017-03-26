@@ -15,9 +15,9 @@ class Payment < ActiveRecord::Base
        customer = Stripe::Customer.create email: email, card: token
        
        Stripe::Charge.create customer: customer.id,
-                                       amount: Reservation.last.total*100,
-                                       description: 'Réservation Aiirbnb',
-                                       currency: 'eur'
+                             amount: Reservation.last.total*100,
+                             description: 'Réservation Aiirbnb',
+                             currency: 'eur'
     
     end
     

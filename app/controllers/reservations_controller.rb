@@ -40,6 +40,8 @@ class ReservationsController < ApplicationController
         
         rescue Exception
         
+        @reservation.destroy
+        
         puts 'Le paiement a échoué'
         
         redirect_to @reservation.room, notice: "Votre paiement a été rejeté"

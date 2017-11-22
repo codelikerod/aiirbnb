@@ -7,6 +7,7 @@ class PagesController < ApplicationController
    def search
       if params[:search].present? && params[:search].strip != ""
          session[:aiirbnb_search] = params[:search]
+         
       end
       
       arrResult = Array.new

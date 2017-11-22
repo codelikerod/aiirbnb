@@ -1,8 +1,11 @@
 <%= form_for([@room, @room.reviews.new]) do |f| %>
+    </br>
     <div id="user_stars"></div>
+    </br>
     <%= f.text_area :comment, rows: 3, class:"form-control" %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <div class="actions">
+        </br>
         <%= f.submit "Evaluez", class:"btn btn-primary" %>
     </div>
 <% end %>

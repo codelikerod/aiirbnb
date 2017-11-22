@@ -4,5 +4,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @rooms = @user.rooms
    end
+   
     
 end

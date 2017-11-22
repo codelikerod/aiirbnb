@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, :path=>'',
-                    :path_names=>{:sign_in=>'login', :sign_out=>'logout', :edit=>'profile'},
-                    :controllers=>{:registrations=>'registrations',
-                                    :confirmations=>'confirmations',
-                                    :omniauth_callbacks=>'omniauth_callbacks'
-                    }
+ 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
+  devise_for :users,
+             :path => '', 
+             :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
+             :controllers => {:registrations => 'registrations', 
+                              :confirmations => 'confirmations',
+                              :omniauth_callbacks => 'omniauth_callbacks'
+                              }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   resources :users, only: [:show]
-  resources :rooms, path: 'annonces' do
+  resources :rooms do
     resources :reservations, only: [:create]
     resources :reviews, only: [:create, :destroy]
   end
@@ -28,6 +33,8 @@ get 'your_trips' => 'reservations#your_trips', path: 'mes_voyages'
 get 'your_reservations' => 'reservations#your_reservations', path: 'mes_reservations'
 
 get '/search' => 'pages#search'
+
+match "/404" => "errors#error404", via: [:get, :post, :patch, :delete]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

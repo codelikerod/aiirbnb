@@ -42,17 +42,19 @@ before_action :require_same_user, only: [:edit, :update]
    end
    
    def update
-       if @room.update(room_params)
-           if params[:images]
+        if @room.update(room_params)
+           
+            if params[:images]
               params[:images].each do |i|
                   @room.photos.create(image: i)
               end
-           end
-          @photos = @room.photos
-          redirect_to edit_room_path(@room), notice:"Modification enregistrée..."
-       else
+            end
+            @room.save
+            @photos = @room.photos
+            redirect_to edit_room_path(@room), notice:"Modification enregistrée..."
+        else
            render :edit
-       end
+        end
    end
    
 private

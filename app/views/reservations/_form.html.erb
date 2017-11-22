@@ -76,13 +76,12 @@
 <% end %>
 
 
-<script>
 
+<script>
     function unavailable(date) {
         dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
         return [$.inArray(dmy, unavailableDates) == -1];
     }
-
     $(function(){
         
         unavailableDates = [];

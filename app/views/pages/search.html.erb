@@ -76,7 +76,7 @@
                                 class:"form-control" %>
                             </div>
                         </div>
-                        
+                      
                         <div class="col-md-4 select">
                             <div class="form-group">
                                 <label>Chambres ?</label>
@@ -137,27 +137,30 @@
                 <hr>
                 
                 
-                
+             
                 <div class="row">
                     <% if @arrRooms.empty? %>
-                        Aucune annonce ne correpond à votre recherche.
+                        Aucune annonce ne correspond à votre recherche.
                     <% else %>
-                        <% @arrRooms.each do |room| %>
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading preview">
-                                    <%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+                            <% @arrRooms.each_slice(2) do |group| %>
+                                <div class="col-md-6">
+                                    <% group.each do |room| %>                            
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading preview">
+                                                <%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+                                            </div>
+                                            <div class="panel-body">
+                                                <%= image_tag avatar_url(room.user), class:"img-circle avatar-small" %>
+                                                <%= link_to room.listing_name, room %>
+                                            </div>
+                                        </div>
+                                    <% end %>
                                 </div>
-                                <div class="panel-body">
-                                    <%= image_tag avatar_url(room.user), class:"img-circle avatar-small" %>
-                                    <%= link_to room.listing_name, room %>
-                                </div>
-                            </div>
-                        </div>
-                        <% end %>
+                            <% end %>
+                            
                     <% end %>
                 </div>
-                
+               
             </div>
         </div>
     </div>

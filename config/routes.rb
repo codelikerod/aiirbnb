@@ -34,6 +34,7 @@ get 'your_reservations' => 'reservations#your_reservations', path: 'mes_reservat
 
 get '/search' => 'pages#search'
 
+match "/404" => "errors#error404", via: [:get, :post, :patch, :delete]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

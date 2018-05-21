@@ -13,10 +13,10 @@
                         </div>
                         <div class="col-md-2">
                             <%= other.fullname %><br>
-                            <%= timeago_tag conversation.messages.last.created_at, :lang=>:fr %>
+                            <%= timeago_tag conversation.messages.last.created_at, :lang=>:fr if conversation.messages.last %>
                         </div>
                         <div class="col-md-8">
-                            <%= conversation.messages.last.content %>
+                            <%= conversation.messages.last.content if conversation.messages.last %>
                         </div>
                     </div>
                     <% end %>

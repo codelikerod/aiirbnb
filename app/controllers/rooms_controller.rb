@@ -9,7 +9,7 @@ before_action :require_same_user, only: [:edit, :update]
    end
    
    def new
-      @room = current_user.rooms.build 
+      @room = current_user.rooms.build
    end
    
    def create
@@ -49,7 +49,6 @@ before_action :require_same_user, only: [:edit, :update]
                   @room.photos.create(image: i)
               end
             end
-            @room.save
             @photos = @room.photos
             redirect_to edit_room_path(@room), notice:"Modification enregistrée..."
         else

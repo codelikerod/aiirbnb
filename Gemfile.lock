@@ -177,7 +177,7 @@ GEM
       terrapin (~> 0.6.0)
     paperclip-cloudinary (1.3.2)
       cloudinary (~> 1.1)
-    pg (1.0.0)
+    pg (0.21.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
     rack (1.6.10)
@@ -311,7 +311,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip
   paperclip-cloudinary
-  pg
+  pg (= 0.21.0)
   rails (= 4.2.5)
   rails-i18n
   rails-timeago
@@ -331,4 +331,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.14.4
+   1.16.2
